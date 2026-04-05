@@ -39,15 +39,26 @@ export function addMountains(app) {
  * @returns // 山々のグラフィックのインスタンス
  */
 function createMountainGroup(app) {
+  // 山のグラフィックオブジェクト
   const graphics = new Graphics();
+
+  // 山の幅
   const width = app.screen.width / 2;
+
+  // 山の描画の開始点（画面下部）
   const startY = app.screen.height;
+
+  // 個々の山のx軸上の開始点
   const startXLeft = 0;
   const startXMiddle = Number(app.screen.width) / 4;
   const startXRight = app.screen.width / 2;
+
+  // 個々の山の高さ
   const heightLeft = app.screen.height / 2;
   const heightMiddle = (app.screen.height * 4) / 5;
   const heightRight = (app.screen.height * 2) / 3;
+
+  // 個々の山の色
   const colorLeft = 0xc1c0c2;
   const colorMiddle = 0x7e818f;
   const colorRight = 0x8c919f;

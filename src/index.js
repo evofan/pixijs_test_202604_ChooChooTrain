@@ -6,6 +6,7 @@ import { VERSION } from "pixi.js";
 import { addStars } from "./addStars";
 import { addMoon } from "./addMoon";
 import { addMountains } from "./addMountains";
+import { addTrees } from "./addTrees";
 
 // PixiJSのアプリを作成する
 const app = new Application();
@@ -28,6 +29,8 @@ const app = new Application();
   // 山を追加
   addMountains(app);
 
+  // 木を追加
+  addTrees(app);
   
 })();
 
