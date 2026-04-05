@@ -1,9 +1,9 @@
-# Test PixiJS ver.8 part2
+# Test PixiJS ver.8 part3
 
 <img src="https://evofan.github.io/pixijs_test_202603/screenshot/pic_cap_ver8.png__" width="25%">  
 
 **Demo**  
-[https://evofan.github.io/pixijs_test_202603_ishrod/dist/](https://evofan.github.io/pixijs_test_202603_ishrod/dist/)  
+[https://evofan.github.io/pixijs_test_202604_ChooChooTrain/dist/](https://evofan.github.io/pixijs_test_202604_ChooChooTrain/dist/)  
 
 **Usage**  
 `npm install`  
@@ -15,5 +15,9 @@ reference
 
 **Tutorials**  
 [https://pixijs.com/8.x/tutorials](https://pixijs.com/8.x/tutorials)
->Fish Pond
+>Choo Choo Train
+
+**SVG's**  
+[https://pixijs.com/8.x/guides/components/assets/svg](https://pixijs.com/8.x/guides/components/assets/svg)  
+
 
