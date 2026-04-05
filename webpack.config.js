@@ -15,7 +15,7 @@ module.exports = {
   devServer: {
     // contentBase: "dist",
     strict: "dist",
-    open: true
+    open: true,
   },
 
   // webpack: {
@@ -32,24 +32,25 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: "Pixi.js8 Demo", // If there is template.html, that title takes precedence
-      template: "./src/html/index.html"
+      template: "./src/html/index.html",
     }),
     new SourceMapDevToolPlugin({
-      filename: "[file].map"
+      filename: "[file].map",
     }),
     new CopyPlugin({
       patterns: [
         {
-          from: "src/assets", to: "assets"
-        }
-      ]
-    })
+          from: "src/assets",
+          to: "assets",
+        },
+      ],
+    }),
   ],
 
   output: {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
-    sourceMapFilename: "[name].js.map"
+    sourceMapFilename: "[name].js.map",
   },
 
   // devtool: "source-map",
@@ -66,9 +67,23 @@ module.exports = {
       {
         // Turn off SourceMap warnings.
         test: /\.js$/,
-        enforce: 'pre',
-        use: ['source-map-loader'],
+        enforce: "pre",
+        use: ["source-map-loader"],
       },
+      {
+       //test: /\.svg$/,
+        //type: "assets/images", // ファイルとして出力してURLを返す
+       //  type: "asset/inline" // Base64としてJSに埋め込む
+      },
+      // {
+      //   test: /\.svg$/,
+      //   use: {
+      //     loader: "svg-url-loader",
+      //         options: {
+      //             noquotes: true
+      //         }
+      //   },
+      // },
     ],
   },
 };
