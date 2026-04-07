@@ -1,16 +1,20 @@
 // reference URL
 // https://pixijs.com/8.x/tutorials/choo-choo-train
 
-import { Application } from "pixi.js";
+import { Application, Container } from "pixi.js";
 import { VERSION } from "pixi.js";
 import { addStars } from "./addStars";
 import { addMoon } from "./addMoon";
 import { addMountains } from "./addMountains";
 import { addTrees } from "./addTrees";
 import { addGround } from "./addGround";
+import { addTrain } from "./addTrain";
 
 // PixiJSのアプリを作成する
 const app = new Application();
+
+// 列車のすべてを格納するコンテナを作成する
+const trainContainer = new Container();
 
 // Asynchronous IIFE
 // 非同期即時実行関数式
@@ -35,7 +39,9 @@ const app = new Application();
 
   // 地面を追加
   addGround(app);
-  
+
+  // 車輪を追加
+  addTrain(app, trainContainer);
 })();
 
 // PixiJSのバージョンを表示
