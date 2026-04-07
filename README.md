@@ -20,4 +20,7 @@ reference
 **SVG's**  
 [https://pixijs.com/8.x/guides/components/assets/svg](https://pixijs.com/8.x/guides/components/assets/svg)  
 
-
+**strokeThickness**  
+>strokeThickness（ストローク・シックネス）は、  
+>プログラミングやデザイン分野（特にSVG, WPF, Processing, CSS等）で  
+>図形や線（Stroke）の太さ（Thickness）」を意味するプロパティです。  
