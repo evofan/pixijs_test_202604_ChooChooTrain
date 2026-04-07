@@ -5,30 +5,32 @@ import { Graphics } from "pixi.js";
  * @param { object } app
  */
 export function addTrees(app) {
-  const treeWidth = 200;
-  const y = app.screen.height - 20;
-  const spacing = 15;
-  const count = app.screen.width / (treeWidth + spacing) + 1;
-  const trees = [];
+  const treeWidth = 200; // 各木の幅
+  const y = app.screen.height - 20; // 木のy座標
+  const spacing = 15; // 木と木の間
+  const count = app.screen.width / (treeWidth + spacing) + 1; // 木の数
+  const trees = []; // 作成した木を格納する配列
 
   for (let index = 0; index < count; index++) {
-    const treeHeight = 225 + Math.random() * 50;
-    const tree = createTree(treeWidth, treeHeight);
+    const treeHeight = 225 + Math.random() * 50; // 木の高さをランダムで
+    const tree = createTree(treeWidth, treeHeight); // 木を作成
 
-    tree.x = index * (treeWidth + spacing);
-    tree.y = y;
+    tree.x = index * (treeWidth + spacing); // x座標を設定
+    tree.y = y; // y座標を設定
 
-    app.stage.addChild(tree);
-    trees.push(tree);
+    app.stage.addChild(tree); // 画面に追加
+    trees.push(tree); // 配列に格納
   }
 
   // 木をアニメーションさせる（山より速くする事で視差効果で近くに見える）
   app.ticker.add((time) => {
     const dx = time.deltaTime * 3;
 
+    // 木の配列に対して（全ての木に対して）
     trees.forEach((tree) => {
-      tree.x -= dx;
+      tree.x -= dx; // x座標を左に移動
 
+      // 画面外に出たら右から出て来る
       if (tree.x <= -(treeWidth / 2 + spacing)) {
         tree.x += count * (treeWidth + spacing) + spacing * 3;
       }

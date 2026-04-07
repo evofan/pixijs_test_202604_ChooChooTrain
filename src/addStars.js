@@ -4,6 +4,7 @@ export function addStars(app) {
   const starCount = 20; // 星の数
   const graphics = new Graphics(); // Graphicsインスタンス
 
+  // ランダムな大きさ・角度で星を配置
   for (let i = 0; i < starCount; i++) {
     const x = (i * 0.78695 * app.screen.width) % app.screen.width;
     const y = (i * 0.9382 * app.screen.height) % app.screen.height;
