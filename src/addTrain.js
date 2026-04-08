@@ -6,20 +6,27 @@ import { Container, Graphics } from "pixi.js";
  * @param { object } container
  */
 export function addTrain(app, container) {
+  // 先頭列車を作成
   const head = createTrainHead(app);
-  // Add the head to the train container.
+
+  // 2台目の車両を作成
+  const carriage = createTrainCarriage(app);
+  carriage.x = -carriage.width; // 1台目の後ろに移動
+
+  container.addChild(head, carriage);
+
+  // 先頭列車をコンテナに追加
   container.addChild(head);
 
-  // Add the train container to the stage.
+  // ステージにコンテナを追加
   app.stage.addChild(container);
 
-  const scale = 0.75;
+  const scale = 0.75; // 縮小率
 
-  // Adjust the scaling of the train.
+  // 列車の縮小率を設定（全体に掛ける事で簡易に、考え方）
   container.scale.set(scale);
 
-  // Position the train, taking into account the variety of screen width.
-  // To keep the train as the main focus, the train is offset slightly to the left of the screen center.
+  // スクリーンのサイズに応じて列車の位置を設定（中央に）
   container.x = app.screen.width / 2 - head.width / 2;
   container.y = app.screen.height - 35 - 55 * scale;
 }
@@ -140,6 +147,83 @@ function createTrainHead(app) {
     backWheel.rotation += dr * (smallWheelRadius / bigWheelRadius); // 大きい車輪を回転
     midWheel.rotation += dr; // 中間の車輪を回転
     frontWheel.rotation += dr; // 小さい車輪を回転
+  });
+
+  return container;
+}
+
+/**
+ * 2台目の車両を作成
+ * @param { object } app
+ */
+function createTrainCarriage(app) {
+  const container = new Container();
+
+  const containerHeight = 125;
+  const containerWidth = 200;
+  const containerRadius = 15;
+  const edgeHeight = 25;
+  const edgeExcess = 20;
+  const connectorWidth = 30;
+  const connectorHeight = 10;
+  const connectorGap = 10;
+  const connectorOffsetY = 20;
+
+  const graphics = new Graphics()
+    // 本体を描画
+    .roundRect(
+      edgeExcess / 2,
+      -containerHeight,
+      containerWidth,
+      containerHeight,
+      containerRadius,
+    )
+    .fill({ color: 0x725f19 })
+
+    // トップのエッジを描画
+    .rect(
+      0,
+      containerRadius - containerHeight - edgeHeight,
+      containerWidth + edgeExcess,
+      edgeHeight,
+    )
+    .fill({ color: 0x52431c })
+
+    // 連結器を描画
+    .rect(
+      containerWidth + edgeExcess / 2,
+      -connectorOffsetY - connectorHeight,
+      connectorWidth,
+      connectorHeight,
+    )
+    .rect(
+      containerWidth + edgeExcess / 2,
+      -connectorOffsetY - connectorHeight * 2 - connectorGap,
+      connectorWidth,
+      connectorHeight,
+    )
+    .fill({ color: 0x121212 });
+
+  // 車輪
+  const wheelRadius = 35;
+  const wheelGap = 40;
+  const centerX = (containerWidth + edgeExcess) / 2;
+  const offsetX = wheelRadius + wheelGap / 2;
+
+  const backWheel = createTrainWheel(wheelRadius);
+  const frontWheel = createTrainWheel(wheelRadius);
+
+  backWheel.x = centerX - offsetX;
+  frontWheel.x = centerX + offsetX;
+  frontWheel.y = backWheel.y = 25;
+
+  container.addChild(graphics, backWheel, frontWheel);
+
+  app.ticker.add((time) => {
+    const dr = time.deltaTime * 0.15;
+
+    backWheel.rotation += dr;
+    frontWheel.rotation += dr;
   });
 
   return container;

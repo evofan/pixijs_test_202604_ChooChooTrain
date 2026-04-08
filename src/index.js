@@ -9,6 +9,7 @@ import { addMountains } from "./addMountains";
 import { addTrees } from "./addTrees";
 import { addGround } from "./addGround";
 import { addTrain } from "./addTrain";
+import { addSmokes } from "./addSmokes";
 
 // PixiJSのアプリを作成する
 const app = new Application();
@@ -42,6 +43,9 @@ const trainContainer = new Container();
 
   // 車輪を追加
   addTrain(app, trainContainer);
+
+  // 煙を追加
+  addSmokes(app, trainContainer);
 })();
 
 // PixiJSのバージョンを表示
