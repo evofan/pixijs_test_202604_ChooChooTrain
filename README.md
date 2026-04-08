@@ -1,6 +1,6 @@
 # Test PixiJS ver.8 part3
 
-<img src="https://evofan.github.io/pixijs_test_202603/screenshot/pic_cap_ver8.png__" width="25%">  
+<img src="https://evofan.github.io/pixijs_test_202604_ChooChooTrain/screenshot/pic_train.png" width="50%">  
 
 **Demo**  
 [https://evofan.github.io/pixijs_test_202604_ChooChooTrain/dist/](https://evofan.github.io/pixijs_test_202604_ChooChooTrain/dist/)  
